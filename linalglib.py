@@ -126,9 +126,6 @@ class Linvec:
         else:
             raise Exception("Unknown Type Error")
     
-    def test(self, otherVec):
-        if type(otherVec) == type(self):
-            return "hey girl"
     
     def dot(self, otherVec):
         if len(self.vec) != len(otherVec.vec):
@@ -202,7 +199,7 @@ class Linvec:
                     "\n||u|| ||v|| = " + str(norm1*norm2) + "\n" + str(dotval) + \
                         " ≤ " + str(norm1*norm2) + "\nThus, Cauchy-Schwarz Inequality is upheld.\n"
         else:
-            raise Exception("how.")
+            raise Exception("Unknown Error Occured. Likely wrong data types.")
             
     def verify_Triangle_Inequality(self, other):
         if type(self) != type(other):
@@ -216,7 +213,13 @@ class Linvec:
                     "\n||u|| + ||v|| = " + str(norm1 + norm2) + "\n" + str(comb_norm) + \
                         " ≤ " + str(norm1+norm2) + "\nThus, Triangle Inequality is upheld.\n"
         else:
-            raise Exception("how.")
+            raise Exception("Unknown Error Occured. Likely wrong data types.")
+            
+    def rnd(self, value=2):
+        f = []
+        for i in range(len(self)):
+            f.append(round(self.vec[i], value))
+        return Linvec(f)
             
     def distance(self, other):
         if len(self.vec) != len(other.vec):
